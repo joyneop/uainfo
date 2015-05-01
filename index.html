@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>UA Info</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/joyneop.png">
+	<style type="text/css">
+	/*@import url(/fonts/seravek.css);*/
+	/*@import url(/fonts/font-awesome.css);*/
+	@import url(http://joyneop.xyz/fonts/font-awesome.css);
+	* {
+		text-rendering: optimizeLegibility;
+		box-sizing: border-box;
+	}
+	body {
+		font-family: Seravek, 'Myriad Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-weight: 300;
+		font-size: 18px;
+		color: #FFF;
+		background: #333;
+		padding: 0;
+		margin: 0;
+	}
+	.cont {
+		font-family: Inconsolata, Menlo, 'Myriad Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		margin: 20px auto;
+	}
+	@media screen and (max-width: 359px) {
+		.cont {
+			margin: 20px;
+		}
+	}
+	@media screen and (min-width: 360px) and (max-width: 759px) {
+		.cont {
+			max-width: 340px;
+		}
+	}
+	@media screen and (min-width: 760px) {
+		.cont {
+			max-width: 420px;
+		}
+	}
+	.cont > div {
+		margin: 20px auto;
+	}
+	.cont > div:hover {
+		box-shadow: rgba(0, 0, 0, 0.585) 0 3px 8px;
+	}
+	h1 {
+		font-size: 2em;
+		font-weight: 400;
+		text-align: center;
+		padding: 0.5em 0 0;
+	}
+	h2 {
+		font-size: 1em;
+		font-weight: 300;
+		color: #FFF;
+		letter-spacing: 0.012rem;
+		text-align: center;
+		text-shadow: rgba(0, 0, 0, 0.2) 0 1px 0px;
+		background: #188DE0;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		padding: 0.67em 1em;
+		margin: 0;
+	}
+	h2 span {
+		display: block;
+		text-align: center;
+		padding-right: 3px;
+	}
+	h2 .fa {
+		font-size: 0.875em;
+		text-align: center;
+		display: inline-block;
+		/*display: none;*/
+		float: left;
+		width: 1.00em;
+		width: 0px;
+		/*margin-right: 0.5em;*/
+	}
+	p {
+		font-weight: 300;
+		color: #222;
+		background: #FFF;
+		/*border-left: 1px solid #CCC;*/
+		/*border-right: 1px solid #CCC;*/
+		/*border-bottom: 1px solid #CCC;*/
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		padding: 0.67em 1em;
+		margin: 0;
+	}
+	footer {
+		font-size: 14px;
+		color: #CCC;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<h1>UA Info</h1>
+	<div class="cont">
+
+		<div>
+			<h2><i class="fa fa-globe"></i><span>navigator.userAgent</span></h2>
+			<p id="nav-ua-string"></p>
+		</div>
+
+		<div>
+			<h2><i class="fa fa-rotate-right"></i><span>Rotation Mode</span></h2>
+			<p id="rotation-mode"></p>
+		</div>
+
+		<div>
+			<h2><i class="fa fa-arrows-h"></i><span>window.innerWidth</span></h2>
+			<p id="window-width"></p>
+		</div>
+
+		<div>
+			<h2><i class="fa fa-arrows-v"></i><span>window.innerHeight</span></h2>
+			<p id="window-height"></p>
+		</div>
+
+		<div>
+			<h2><i class="fa fa-eye"></i><span>window.devicePixelRatio</span></h2>
+			<p id="pixel-ratio"></p>
+		</div>
+	</div>
+	<footer>
+		© <script type="text/javascript">
+		document.write((new Date()).getFullYear());
+		</script> Joy Neop
+	</footer>
+	<script type="text/javascript">
+	var $ = function (sel) {
+		return document.getElementById(sel);
+	};
+
+	$('nav-ua-string').innerHTML = navigator.userAgent;
+	$('rotation-mode').innerHTML = window.innerWidth > window.innerHeight ? 'Landscape' : 'Portrait';
+	$('window-width').innerHTML = window.innerWidth + 'px';
+	$('window-height').innerHTML = window.innerHeight + 'px';
+	$('pixel-ratio').innerHTML = window.devicePixelRatio + 'x';
+
+	window.addEventListener('resize', function(){
+		$('window-width').innerHTML = window.innerWidth + 'px';
+		$('window-height').innerHTML = window.innerHeight + 'px';
+	}, false);
+	</script>
+</body>
+</html>
