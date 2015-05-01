@@ -6,9 +6,9 @@
 	<link rel="shortcut icon" href="/favicon.ico">
 	<link rel="apple-touch-icon" href="/joyneop.png">
 	<style type="text/css">
-	/*@import url(/fonts/seravek.css);*/
-	/*@import url(/fonts/font-awesome.css);*/
-	@import url(http://joyneop.xyz/fonts/font-awesome.css);
+	@import url(/fonts/seravek.css);
+	@import url(/fonts/font-awesome.css);
+	/*@import url(http://joyneop.xyz/fonts/font-awesome.css);*/
 	* {
 		text-rendering: optimizeLegibility;
 		box-sizing: border-box;
@@ -16,14 +16,13 @@
 	body {
 		font-family: Seravek, 'Myriad Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		font-weight: 300;
-		font-size: 18px;
+		font-size: 16px;
 		color: #FFF;
 		background: #333;
 		padding: 0;
 		margin: 0;
 	}
 	.cont {
-		font-family: Inconsolata, Menlo, 'Myriad Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		margin: 20px auto;
 	}
 	@media screen and (max-width: 359px) {
@@ -42,7 +41,9 @@
 		}
 	}
 	.cont > div {
+		border-radius: 3px;
 		margin: 20px auto;
+		overflow: hidden;
 	}
 	.cont > div:hover {
 		box-shadow: rgba(0, 0, 0, 0.585) 0 3px 8px;
@@ -51,45 +52,32 @@
 		font-size: 2em;
 		font-weight: 400;
 		text-align: center;
+		text-shadow: rgba(0, 0, 0, 0.6) 0 2px 2px;
 		padding: 0.5em 0 0;
 	}
 	h2 {
 		font-size: 1em;
 		font-weight: 300;
 		color: #FFF;
-		letter-spacing: 0.012rem;
 		text-align: center;
 		text-shadow: rgba(0, 0, 0, 0.2) 0 1px 0px;
 		background: #188DE0;
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-		padding: 0.67em 1em;
+		padding: 0.67em 2em 0.67em 1em;
 		margin: 0;
-	}
-	h2 span {
-		display: block;
-		text-align: center;
-		padding-right: 3px;
 	}
 	h2 .fa {
 		font-size: 0.875em;
 		text-align: center;
+		position: relative;
+		top: 3px;
 		display: inline-block;
-		/*display: none;*/
 		float: left;
-		width: 1.00em;
-		width: 0px;
-		/*margin-right: 0.5em;*/
+		width: 1em;
 	}
 	p {
 		font-weight: 300;
 		color: #222;
 		background: #FFF;
-		/*border-left: 1px solid #CCC;*/
-		/*border-right: 1px solid #CCC;*/
-		/*border-bottom: 1px solid #CCC;*/
-		border-bottom-left-radius: 3px;
-		border-bottom-right-radius: 3px;
 		padding: 0.67em 1em;
 		margin: 0;
 	}
@@ -105,27 +93,27 @@
 	<div class="cont">
 
 		<div>
-			<h2><i class="fa fa-globe"></i><span>navigator.userAgent</span></h2>
+			<h2><i class="fa fa-globe"></i>navigator.userAgent</h2>
 			<p id="nav-ua-string"></p>
 		</div>
 
 		<div>
-			<h2><i class="fa fa-rotate-right"></i><span>Rotation Mode</span></h2>
+			<h2><i class="fa fa-rotate-right"></i>Rotation Mode</h2>
 			<p id="rotation-mode"></p>
 		</div>
 
 		<div>
-			<h2><i class="fa fa-arrows-h"></i><span>window.innerWidth</span></h2>
+			<h2><i class="fa fa-arrows-h"></i>window.innerWidth</h2>
 			<p id="window-width"></p>
 		</div>
 
 		<div>
-			<h2><i class="fa fa-arrows-v"></i><span>window.innerHeight</span></h2>
+			<h2><i class="fa fa-arrows-v"></i>window.innerHeight</h2>
 			<p id="window-height"></p>
 		</div>
 
 		<div>
-			<h2><i class="fa fa-eye"></i><span>window.devicePixelRatio</span></h2>
+			<h2><i class="fa fa-eye"></i>window.devicePixelRatio</h2>
 			<p id="pixel-ratio"></p>
 		</div>
 	</div>
@@ -140,7 +128,7 @@
 	};
 
 	$('nav-ua-string').innerHTML = navigator.userAgent;
-	$('rotation-mode').innerHTML = window.innerWidth > window.innerHeight ? 'Landscape' : 'Portrait';
+	$('rotation-mode').innerHTML = (window.innerWidth > window.innerHeight) ? 'Landscape' : 'Portrait';
 	$('window-width').innerHTML = window.innerWidth + 'px';
 	$('window-height').innerHTML = window.innerHeight + 'px';
 	$('pixel-ratio').innerHTML = window.devicePixelRatio + 'x';
