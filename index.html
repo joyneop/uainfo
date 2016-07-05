@@ -3,19 +3,18 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>UA Info</title>
+	<title>WhatUA.Info</title>
 	<link rel="shortcut icon" href="/favicon.ico">
-	<link rel="apple-touch-icon" href="/joyneop.png">
+	<link rel="apple-touch-icon" href="/favicon.png">
 	<style type="text/css">
-	@import url(/fonts/seravek.css);
+	@import url(/fonts/open-sans.css);
 	@import url(/fonts/font-awesome.css);
-	/*@import url(http://joyneop.xyz/fonts/font-awesome.css);*/
 	* {
 		text-rendering: optimizeLegibility;
 		box-sizing: border-box;
 	}
 	body {
-		font-family: Seravek, 'Myriad Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-family: Seravek, 'Myriad Pro', 'SF UI Text', -apple-system, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		font-weight: 300;
 		font-size: 16px;
 		color: #FFF;
@@ -97,6 +96,11 @@
 		</div>
 
 		<div>
+			<h2><i class="fa fa-languge"></i>navigator.language</h2>
+			<p id="language"></p>
+		</div>
+
+		<div>
 			<h2><i class="fa fa-rotate-right"></i>Rotation Mode</h2>
 			<p id="rotation-mode"></p>
 		</div>
@@ -127,10 +131,11 @@
 	};
 
 	$('nav-ua-string').innerHTML = navigator.userAgent;
+	$('language').innerHTML = navigator.language;
 	$('rotation-mode').innerHTML = (window.innerWidth > window.innerHeight) ? 'Landscape' : 'Portrait';
 	$('window-width').innerHTML = window.innerWidth + 'px';
 	$('window-height').innerHTML = window.innerHeight + 'px';
-	$('pixel-ratio').innerHTML = window.devicePixelRatio + 'x';
+	$('pixel-ratio').innerHTML = (window.devicePixelRatio || 1) + 'x';
 
 	window.addEventListener('resize', function(){
 		$('window-width').innerHTML = window.innerWidth + 'px';
