@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>UA Info</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WhatUA.Info</title>
 	<link rel="shortcut icon" href="/favicon.ico">
-	<link rel="apple-touch-icon" href="/joyneop.png">
+	<link rel="apple-touch-icon" href="/favicon.png">
+	<script>
+	(function () {
+		if (localStorage['debug-mode-78912478987432978'] === 'enabled' || (navigator.language.indexOf('zh') >= 0 && window.innerWidth > 768)) {
+			// "zh" can be found in browser langauge
+			var meta = document.createElement('meta');
+			meta.setAttribute('name', 'xtjj');
+			meta.setAttribute('content', '574029d771cfe4006c38c880;bottom-right;white-transparent');
+			document.head.appendChild(meta);
+		};
+	})();
+	</script>
 	<style type="text/css">
-	@import url(/fonts/seravek.css);
+	@import url(/fonts/open-sans.css);
 	@import url(/fonts/font-awesome.css);
-	/*@import url(http://joyneop.xyz/fonts/font-awesome.css);*/
 	* {
 		text-rendering: optimizeLegibility;
 		box-sizing: border-box;
 	}
 	body {
-		font-family: Seravek, 'Myriad Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-family: Seravek, 'Myriad Pro', 'SF UI Text', -apple-system, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		font-weight: 300;
 		font-size: 16px;
 		color: #FFF;
@@ -23,7 +34,9 @@
 		margin: 0;
 	}
 	.cont {
+		border-radius: 3px;
 		margin: 20px auto;
+		overflow: hidden;
 	}
 	@media screen and (max-width: 359px) {
 		.cont {
@@ -41,12 +54,7 @@
 		}
 	}
 	.cont > div {
-		border-radius: 3px;
-		margin: 20px auto;
-		overflow: hidden;
-	}
-	.cont > div:hover {
-		box-shadow: rgba(0, 0, 0, 0.585) 0 3px 8px;
+		margin: 0 auto;
 	}
 	h1 {
 		font-size: 2em;
@@ -78,13 +86,14 @@
 		font-weight: 300;
 		color: #222;
 		background: #FFF;
-		padding: 0.67em 1em;
+		padding: 0.67em 1em 1.3em;
 		margin: 0;
 	}
 	footer {
 		font-size: 14px;
 		color: #CCC;
 		text-align: center;
+		padding: 1em 0 4.5em;
 	}
 	</style>
 </head>
@@ -95,6 +104,11 @@
 		<div>
 			<h2><i class="fa fa-globe"></i>navigator.userAgent</h2>
 			<p id="nav-ua-string"></p>
+		</div>
+
+		<div>
+			<h2><i class="fa fa-language"></i>navigator.language</h2>
+			<p id="language"></p>
 		</div>
 
 		<div>
@@ -128,15 +142,18 @@
 	};
 
 	$('nav-ua-string').innerHTML = navigator.userAgent;
+	$('language').innerHTML = navigator.language;
 	$('rotation-mode').innerHTML = (window.innerWidth > window.innerHeight) ? 'Landscape' : 'Portrait';
 	$('window-width').innerHTML = window.innerWidth + 'px';
 	$('window-height').innerHTML = window.innerHeight + 'px';
-	$('pixel-ratio').innerHTML = window.devicePixelRatio + 'x';
+	$('pixel-ratio').innerHTML = (window.devicePixelRatio || 1) + 'x';
 
 	window.addEventListener('resize', function(){
 		$('window-width').innerHTML = window.innerWidth + 'px';
 		$('window-height').innerHTML = window.innerHeight + 'px';
 	}, false);
 	</script>
+	<script src="https://cdn.neop.me/xtjj/xtjj.js"></script>
+	<div></div>
 </body>
 </html>
