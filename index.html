@@ -36,7 +36,7 @@
 	.cont {
         font-size: 0px;
 		border-radius: 3px;
-		margin: 20px auto;
+		margin: 15px auto 15px;
 		overflow: hidden;
 	}
     .item {
@@ -91,33 +91,42 @@
             height: 170px;
         }
 	}
+	@media screen and (min-width: 900px) and (min-height: 590px) {
+		body {
+			overflow: hidden;
+		}
+		.cont {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			margin: -240px 0 0 -450px;
+		}
+		footer {
+			text-align: center;
+			/*position: fixed;*/
+			/*bottom: 0px;*/
+			/*width: 100%;*/
+			padding: 5px 0 30px !important;
+		}
+	}
 	h1 {
 		font-size: 2em;
 		font-weight: 400;
 		text-align: center;
-		text-shadow: rgba(0, 0, 0, 0.6) 0 2px 2px;
-		padding: 0.5em 0 0;
+		/*display: none;*/
+		padding: 30px 0 0;
+		margin: 0;
 	}
 	h2 {
 		font-size: 1em;
 		font-weight: 300;
 		color: #FFF;
 		text-align: center;
-		text-shadow: rgba(0, 0, 0, 0.2) 0 1px 0px;
 		background: #188DE0;
         height: 40px;
-		padding: 0.67em 2em 0 1em;
+		padding: 0.67em 0 0;
 		margin: 0;
         overflow: hidden;
-	}
-	h2 .fa {
-		font-size: 0.875em;
-		text-align: center;
-		position: relative;
-		top: 3px;
-		display: inline-block;
-		float: left;
-		width: 1em;
 	}
 	p {
 		font-weight: 300;
@@ -126,11 +135,23 @@
 		padding: 0.67em 1em 1.3em;
 		margin: 0;
 	}
+	p.large {
+		font-size: 3em;
+		text-align: center;
+		padding: 50px 0 0;
+	}
 	footer {
 		font-size: 14px;
 		color: #CCC;
 		text-align: center;
-		padding: 1em 0 4.5em;
+		padding: 0 0 30px;
+	}
+	footer a {
+		color: #999;
+		text-decoration: none;
+	}
+	footer a:hover {
+		opacity: 0.8;
 	}
 	</style>
 </head>
@@ -140,50 +161,52 @@
 
 		<div class="item item-big">
             <div class="item-inner">
-    			<h2><i class="fa fa-globe"></i>navigator.userAgent</h2>
+    			<h2>User Agent</h2>
     			<p id="nav-ua-string"></p>
             </div>
 		</div>
 
 		<div class="item item-small">
             <div class="item-inner">
-    			<h2><i class="fa fa-language"></i>navigator.language</h2>
-    			<p id="language"></p>
+    			<h2>Language</h2>
+    			<p class="large" id="language"></p>
             </div>
 		</div>
 
 		<div class="item item-small">
             <div class="item-inner">
-    			<h2><i class="fa fa-rotate-right"></i>Rotation Mode</h2>
-    			<p id="rotation-mode"></p>
+    			<h2>Rotation Mode</h2>
+    			<p class="large" id="rotation-mode"></p>
             </div>
 		</div>
 
 		<div class="item item-small">
             <div class="item-inner">
-    			<h2><i class="fa fa-arrows-h"></i>window.innerWidth</h2>
-    			<p id="window-width"></p>
+    			<h2>innerWidth</h2>
+    			<p class="large" id="window-width"></p>
             </div>
 		</div>
 
 		<div class="item item-small">
             <div class="item-inner">
-    			<h2><i class="fa fa-arrows-v"></i>window.innerHeight</h2>
-    			<p id="window-height"></p>
+    			<h2>innerHeight</h2>
+    			<p class="large" id="window-height"></p>
             </div>
 		</div>
 
 		<div class="item item-small">
             <div class="item-inner">
-    			<h2><i class="fa fa-eye"></i>window.devicePixelRatio</h2>
-    			<p id="pixel-ratio"></p>
+    			<h2>devicePixelRatio</h2>
+    			<p class="large" id="pixel-ratio"></p>
             </div>
 		</div>
 	</div>
 	<footer>
-		© <script type="text/javascript">
-		document.write((new Date()).getFullYear());
-		</script> Joy Neop
+		<a href="https://joyneop.xyz/">
+			© <script type="text/javascript">
+			document.write((new Date()).getFullYear());
+			</script> Joy Neop (a.k.a. Neruthes)
+		</a>
 	</footer>
 	<script type="text/javascript">
 	var $ = function (sel) {
@@ -193,9 +216,9 @@
 	$('nav-ua-string').innerHTML = navigator.userAgent;
 	$('language').innerHTML = navigator.language;
 	$('rotation-mode').innerHTML = (window.innerWidth > window.innerHeight) ? 'Landscape' : 'Portrait';
-	$('window-width').innerHTML = window.innerWidth + 'px';
-	$('window-height').innerHTML = window.innerHeight + 'px';
-	$('pixel-ratio').innerHTML = (window.devicePixelRatio || 1) + 'x';
+	$('window-width').innerHTML = window.innerWidth;
+	$('window-height').innerHTML = window.innerHeight;
+	$('pixel-ratio').innerHTML = '@' + (window.devicePixelRatio || 1) + 'x';
 
 	window.addEventListener('resize', function(){
 		$('window-width').innerHTML = window.innerWidth + 'px';
